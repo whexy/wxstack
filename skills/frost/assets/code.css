@@ -1,0 +1,136 @@
+/*
+ * Frost long-form extras: code titles, diff/highlight lines,
+ * footnotes, inline code chips, Typst diagrams. Pair with
+ * prism-gruvbox.css (code block colors) and the Prose recipe in
+ * ../references/components.md.
+ *
+ * Code speaks gruvbox dark; its hex values are the gruvbox palette,
+ * scoped to code, and are the only raw colors allowed outside
+ * tokens.css. Copied unchanged from www.whexy.com.
+ */
+
+.rehype-code-title {
+  @apply rounded-t-lg border border-b-0 border-[#3c3836] bg-[#32302f] px-5 py-2 font-mono text-sm font-bold text-[#a89984];
+  position: relative;
+}
+
+.rehype-code-title::before {
+  content: "> ";
+}
+
+.rehype-code-title::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #fb4934; /* gruvbox red */
+}
+
+.rehype-code-title + .pre-container > pre {
+  @apply !mt-0 !rounded-t-none;
+}
+
+.footnotes {
+  @apply pb-4 text-sm;
+}
+
+sup > a {
+  @apply !shadow-none;
+}
+
+.footnotes a {
+  @apply font-normal text-neutral-500 !shadow-none;
+}
+
+/* As shipped on the site; this selector only matches a <code> that is a
+   direct child of .prose, so inline code inside paragraphs gets no chip.
+   See open-questions.md ("Inline code chip"). */
+.prose:not(pre) > code {
+  @apply rounded-md border border-neutral-100 bg-neutral-100 px-1 py-0.5;
+}
+
+/* The chip already signals code; drop typography's backtick decoration */
+.prose :not(pre) > code::before,
+.prose :not(pre) > code::after {
+  content: none;
+}
+
+.callout code {
+  @apply rounded-md border border-neutral-200 bg-neutral-200 px-1 py-0.5 text-neutral-800;
+}
+
+pre {
+  overflow-x: auto;
+}
+
+.code-highlight {
+  float: left; /* 1 */
+  min-width: 100%; /* 2 */
+}
+
+.code-line {
+  display: block;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-left: -16px;
+  margin-right: -16px;
+  border-left-width: 4px;
+  border-left-color: rgba(31, 41, 55, 0); /* Set code block color */
+}
+
+.code-line.inserted {
+  background-color: rgba(
+    184,
+    187,
+    38,
+    0.15
+  ); /* gruvbox green: inserted line (+) */
+}
+
+.code-line.deleted {
+  background-color: rgba(
+    251,
+    73,
+    52,
+    0.15
+  ); /* gruvbox red: deleted line (-) */
+}
+
+.highlight-line {
+  margin-left: -16px;
+  margin-right: -16px;
+  background-color: rgba(
+    60,
+    56,
+    54,
+    0.8
+  ); /* gruvbox bg1: highlight bg color */
+  border-left-width: 4px;
+  border-left-color: rgb(
+    131,
+    165,
+    152
+  ); /* gruvbox blue: highlight accent border */
+}
+
+.line-number::before {
+  display: inline-block;
+  width: 1rem;
+  text-align: right;
+  margin-right: 16px;
+  margin-left: -8px;
+  color: #7c6f64; /* gruvbox bg3: line number color */
+  content: attr(line);
+}
+
+/* Typst inline SVG diagrams */
+.typst-diagram > svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}

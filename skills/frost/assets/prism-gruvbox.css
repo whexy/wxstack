@@ -1,0 +1,128 @@
+/**
+ * Gruvbox Dark theme for `prism.js`
+ * Palette: https://github.com/morhetz/gruvbox (medium contrast)
+ *
+ * Canonical gruvbox mapping: keywords red, strings/functions green,
+ * types yellow, constants purple, identifiers blue, preproc aqua,
+ * specials orange, comments gray.
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #ebdbb2; /* fg1 */
+  font-family:
+    var(--font-jetbrains), Inconsolata, Monaco, Consolas,
+    "Courier New", Courier, monospace;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  line-height: 1.5;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+  border-radius: 0.5rem; /* rounded-lg, matches .rehype-code-title */
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  background: #282828; /* bg0 */
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: 0.1em;
+  border-radius: 0.3em;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #928374; /* gray */
+  font-style: italic;
+}
+
+.token.punctuation {
+  color: #a89984; /* fg4 */
+}
+
+.namespace {
+  opacity: 0.7;
+}
+
+.token.keyword,
+.token.tag,
+.token.deleted {
+  color: #fb4934; /* red */
+}
+
+.token.property,
+.token.attr-name,
+.token.variable,
+.token.entity,
+.token.url {
+  color: #83a598; /* blue */
+}
+
+.token.class-name {
+  color: #fabd2f; /* yellow */
+}
+
+.token.boolean,
+.token.constant,
+.token.number,
+.token.symbol {
+  color: #d3869b; /* purple */
+}
+
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted,
+.token.attr-value,
+.token.function {
+  color: #b8bb26; /* green */
+}
+
+.token.selector,
+.token.atrule {
+  color: #8ec07c; /* aqua */
+}
+
+.token.operator,
+.token.regex {
+  color: #fe8019; /* orange */
+  background: none;
+}
+
+.token.important {
+  color: #fb4934; /* red */
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}

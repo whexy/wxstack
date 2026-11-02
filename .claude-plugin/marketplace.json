@@ -1,0 +1,24 @@
+{
+  "name": "wxstack",
+  "description": "Wenxuan Shi's agent skills",
+  "owner": {
+    "name": "Wenxuan Shi",
+    "url": "https://github.com/whexy"
+  },
+  "plugins": [
+    {
+      "name": "frost",
+      "source": "./",
+      "description": "The design language of www.whexy.com: tokens, components, page blocks and a fixed review checklist.",
+      "license": "MIT",
+      "repository": "https://github.com/whexy/wxstack",
+      "skills": [
+        "./skills/frost",
+        "./skills/frost-setup",
+        "./skills/frost-page",
+        "./skills/frost-component",
+        "./skills/frost-review"
+      ]
+    }
+  ]
+}

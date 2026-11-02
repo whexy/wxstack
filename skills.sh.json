@@ -1,0 +1,16 @@
+{
+  "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
+  "groupings": [
+    {
+      "title": "Frost",
+      "description": "The design language of www.whexy.com: tokens, components, page blocks and a fixed review checklist.",
+      "skills": [
+        "frost",
+        "frost-setup",
+        "frost-page",
+        "frost-component",
+        "frost-review"
+      ]
+    }
+  ]
+}
