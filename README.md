@@ -22,18 +22,6 @@ claude plugin marketplace add whexy/wxstack
 claude plugin install frost@wxstack
 ```
 
-<details>
-<summary>From Nix</summary>
-
-`packages.<system>.default` holds every skill at `share/skills/<name>`;
-link that directory into your agents' skill directories.
-
-```nix
-inputs.wxstack.url = "github:whexy/wxstack";
-```
-
-</details>
-
 ## Skills
 
 ### Frost

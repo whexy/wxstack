@@ -4,7 +4,7 @@
   be set: `npx skills` and Claude Code skip a skill otherwise.
 - Each skill sits in exactly one `skills.sh.json` grouping, and each grouping
   is the Claude Code plugin of the same name with the same skills, so the
-  skills.sh page, the plugin list and Nix's `skillNames` agree.
+  skills.sh page and the plugin list agree.
 - A relative link or path may not leave its own skill directory: `npx skills
   add --skill` installs one skill without its siblings.
 """

@@ -20,7 +20,7 @@ jobs:
           DISABLE_TELEMETRY: "1"
         run: |
           npx -y skills add . --list | tee list.txt
-          for name in $(nix eval --raw .#default.skillNames --apply 'builtins.concatStringsSep " "'); do
+          for name in $(jq -r '.groupings[].skills[]' skills.sh.json); do
             grep -qw -- "$name" list.txt || { echo "npx skills does not list $name"; exit 1; }
           done
       - name: Claude Code accepts the marketplace

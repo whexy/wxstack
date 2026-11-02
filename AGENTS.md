@@ -1,6 +1,7 @@
-This repository publishes agent skills three ways at once: `npx skills`
-reads `skills/`, Claude Code reads `.claude-plugin/marketplace.json`, and
-Nix consumers read `packages.default` (`nix/package.nix`). Keep them in step.
+This repository publishes agent skills two ways at once: `npx skills`
+reads `skills/`, and Claude Code reads `.claude-plugin/marketplace.json`.
+Keep them in step. The flake only checks the repository; Nix homes install
+from it with the `skills` CLI, like any other skill repository.
 
 ## Adding or changing a skill
 
