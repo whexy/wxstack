@@ -11,6 +11,18 @@
         "frost-component",
         "frost-review"
       ]
+    },
+    {
+      "title": "Ownership",
+      "description": "Keep ownership of work an agent produced: frame the task, gather evidence, review it from a clean context, and decide whether to sign.",
+      "skills": [
+        "brief",
+        "audit",
+        "fresh-eyes",
+        "counter",
+        "exam",
+        "postmortem"
+      ]
     }
   ]
 }

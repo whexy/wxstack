@@ -19,6 +19,21 @@
         "./skills/frost-component",
         "./skills/frost-review"
       ]
+    },
+    {
+      "name": "ownership",
+      "source": "./",
+      "description": "Keep ownership of work an agent produced: frame the task, gather evidence, review it from a clean context, and decide whether to sign.",
+      "license": "MIT",
+      "repository": "https://github.com/whexy/wxstack",
+      "skills": [
+        "./skills/brief",
+        "./skills/audit",
+        "./skills/fresh-eyes",
+        "./skills/counter",
+        "./skills/exam",
+        "./skills/postmortem"
+      ]
     }
   ]
 }
