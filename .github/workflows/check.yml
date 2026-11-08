@@ -18,6 +18,9 @@ jobs:
       - name: npx skills finds every skill
         env:
           DISABLE_TELEMETRY: "1"
+          # The CLI colours its output under CI; the escape codes before a
+          # name defeat grep -w.
+          NO_COLOR: "1"
         run: |
           npx -y skills add . --list | tee list.txt
           for name in $(jq -r '.groupings[].skills[]' skills.sh.json); do
