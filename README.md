@@ -69,6 +69,14 @@ Install them together to get the whole loop:
 claude plugin install ownership@wxstack
 ```
 
+### Workflow
+
+Habits for a repository's day-to-day work.
+
+| Skill | Use it to |
+| ----- | --------- |
+| [ship-pr](skills/ship-pr/SKILL.md) | Commit, rebase, open a pull request, watch CI and rebase-merge it, or stop before the merge |
+| [nix-blueprint](skills/nix-blueprint/SKILL.md) | Find where a file goes, and which output it becomes, in a flake built with numtide/blueprint |
 
 ## License
 

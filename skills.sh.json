@@ -23,6 +23,14 @@
         "exam",
         "postmortem"
       ]
+    },
+    {
+      "title": "Workflow",
+      "description": "Ship finished work as a rebase-merged pull request, and wire files into Nix flakes built with numtide/blueprint.",
+      "skills": [
+        "ship-pr",
+        "nix-blueprint"
+      ]
     }
   ]
 }

@@ -34,6 +34,17 @@
         "./skills/exam",
         "./skills/postmortem"
       ]
+    },
+    {
+      "name": "workflow",
+      "source": "./",
+      "description": "Ship finished work as a rebase-merged pull request, and wire files into Nix flakes built with numtide/blueprint.",
+      "license": "MIT",
+      "repository": "https://github.com/whexy/wxstack",
+      "skills": [
+        "./skills/ship-pr",
+        "./skills/nix-blueprint"
+      ]
     }
   ]
 }
