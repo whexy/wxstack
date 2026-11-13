@@ -26,9 +26,6 @@ curl -sS -X POST "$CONTROL_URL/auth/tokens" \
   A new namespace needs no other setup.
 - `expiresAt` is optional. Always set one: an ISO-8601 UTC time in the future,
   ending in `Z`.
-- On a private network where each namespace host is published by hand, a
-  token for a new namespace is not enough: its Workers are unreachable until
-  the host `<namespace>.<platform-domain>` is published. Tell the user.
 
 The response's `token` is shown once; `tokenId` names it later. Keep the token
 in a variable. Hand it to its owner by the rules in the skill's

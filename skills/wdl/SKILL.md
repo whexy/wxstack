@@ -60,14 +60,24 @@ namespace, control URL and masked token in use, and where each one came from.
 ### Private platforms
 
 A private install is usually on a private network, such as a VPN or a
-tailnet, and serves its real hostnames there over HTTPS. If the control host
-resolves from this machine, use the URLs directly; nothing below applies.
+tailnet, and serves HTTPS there. If its address resolves from this machine,
+use the URLs the user gave you directly; the port-forward below does not
+apply.
 
-On such a network, the Worker host for a new namespace may not exist until
-the operator publishes it, because some private networks cannot give every
-`<namespace>.<platform-domain>` name automatically. If the control URL works
-but the Worker host does not resolve, tell the user the namespace needs
-publishing; do not reach it another way.
+Some private networks cannot give every namespace its own hostname, so the
+install serves all of them from one host by path, for example a control URL
+of `https://<host>/<prefix>` and Workers at
+`https://<host>/<namespace>/<worker>/`. The user tells you the shape. Then:
+
+- Deploying a new namespace or Worker needs nothing from the operator; it is
+  reachable as soon as it is deployed. Never ask for a per-Worker hostname,
+  route or ingress.
+- The URLs the CLI prints are the platform's internal hostnames. Translate
+  them to the shape the user gave before you request or report them.
+- The Worker still sees only the path after its own name, but every Worker
+  on the host shares one browser origin, and `request.url` carries the
+  internal hostname. Use relative links, and never build an absolute URL
+  from `request.url`.
 
 Off that network, a private install may be reachable only through a
 port-forward or tunnel to its gateway. The gateway still routes by `Host`
