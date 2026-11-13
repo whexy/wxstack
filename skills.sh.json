@@ -31,6 +31,13 @@
         "ship-pr",
         "nix-blueprint"
       ]
+    },
+    {
+      "title": "WDL",
+      "description": "Build, deploy and debug Cloudflare Workers-style code on a self-hosted WDL platform, and issue its namespace tokens.",
+      "skills": [
+        "wdl"
+      ]
     }
   ]
 }
