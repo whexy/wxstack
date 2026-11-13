@@ -11,7 +11,7 @@ Read first. Load the `frost` skill by name; these paths are inside its directory
 
 ## 1. Look for it first
 
-Search components.md and components.css for the job, not the name
+Search components.md, components.css and charts.md for the job, not the name
 (a "pill toggle" is the segmented control; a "tag link card" may be an
 embed card or a list row).
 

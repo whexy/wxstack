@@ -5,8 +5,10 @@ page on www.whexy.com is a stack of the blocks below, and nothing else.
 When a new screen needs a section none of these can provide, stop and
 ask the user whether it belongs before designing one.
 
-The site has **no footer, no publication list, no stat or feature
-cards, no forms**. Do not assume them.
+The site has **no footer, no publication list, no feature cards, no
+forms**. Do not assume them. Pages that show data use the chart blocks
+in [charts.md](charts.md) (Dashboard shell, Metric hero, Chart card,
+Stat row).
 
 ## Blocks
 

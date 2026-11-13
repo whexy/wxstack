@@ -10,10 +10,12 @@ by the `frost` skill. For UI work, use the `frost-page`,
 - Use only the `neutral` grays. Warm or cool grays fight the colored glow behind the glass.
 - Reach for a Frost class (`glass-card`, `panel`, `paper`, `btn-glass`, `segmented`, …) before writing utilities, and promote a pattern into `components.css` once it repeats three times. One definition keeps every instance identical.
 - Put long-form text on `paper`, never on glass. Blurred, tinted backgrounds cost legibility over many paragraphs.
-- Use `accent` (the dusty rose) only for link highlighting, focus rings and text selection. A single functional color stays meaningful only if it is never decoration.
+- Use `accent` (the dusty rose) only for link highlighting, focus rings, text selection and a selected chart range. A single functional color stays meaningful only if it is never decoration.
 - Keep color decorative and behind glass: tints and blobs at low opacity, `-z-10`, with content in `relative z-10`. Text and controls stay neutral so the page reads calm.
+- In charts, color means identity only: give each entity a `series-N` slot in order and keep it across the page, draw totals in `series-total`, and never color text. A hue that also meant size, rank or good/bad could no longer say which entity it is.
+- Draw charts on `paper`, never on glass, following `references/charts.md` in the `frost` skill. Thin lines lose legibility over a blurred background.
 - Give depth with light, not lines: hairline `black/5` borders and `shadow-sm shadow-black/5`, never heavy borders or dark shadows. Heavy edges break the frosted look.
-- Keep all content in the single `max-w-content` (720px) column. One column is the site's reading rhythm.
+- Keep reading content in the single `max-w-content` (720px) column; only pages built around charts use the full-width Dashboard shell. One column is the site's reading rhythm, and charts need the room.
 - Make page-level surfaces square and edge to edge below `sm`, and step the radius down when nesting (3xl > 2xl > xl > lg). Phone screens are too narrow to spend on gutters, and nested equal radii look misaligned.
 - Use `text-sm` as the UI size, `font-title` (Lato) for headings and controls, and `font-article` (Fira Sans) for reading text. Two families with fixed jobs keep chrome and content distinct.
 - Animate with `duration-150` for color and `duration-200` for everything else, and never lift past `scale-[1.02]`. Calm motion is part of the look.

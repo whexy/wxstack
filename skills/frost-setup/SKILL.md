@@ -45,6 +45,8 @@ From the `frost` skill's `assets/` into the project:
 | ---- | ----------- | ---- |
 | `tokens.css`, `components.css` | `styles/frost/` | Always |
 | `code.css`, `prism-gruvbox.css` | `styles/frost/` | The project renders Markdown/MDX |
+| `charts.css` | `styles/frost/` | The project draws charts |
+| `charts.ts` | `lib/frost-charts.ts` | The project draws charts |
 | `fonts.ts` | `lib/fonts.ts` | Next.js |
 
 Copy them unchanged. They are the shared source; a project-specific
@@ -60,6 +62,7 @@ In the global stylesheet, in this order:
 @import "./frost/tokens.css";
 @import "./frost/components.css";
 @import "./frost/code.css"; /* if Markdown/MDX */
+@import "./frost/charts.css"; /* if charts */
 ```
 
 Import `prism-gruvbox.css` from the root layout next to the global

@@ -8,6 +8,7 @@ description: Build a new page or page section in the Frost design language (www.
 Read first. Load the `frost` skill by name; these paths are inside its directory:
 `references/blocks.md`, `references/components.md`,
 `references/foundations.md`, and the rules in `assets/AGENTS.frost.md`.
+If the page shows data, also `references/charts.md`.
 
 If `styles/frost/tokens.css` is missing from the project, run
 `frost-setup` first.
@@ -21,8 +22,8 @@ List the page top to bottom as named blocks, in the format of the
 Page shell › Site header › space-y-8 [Profile hero, Entry list]
 ```
 
-For every section, name the block it is. If a section matches no
-block:
+For every section, name the block it is (blocks.md, or the chart
+blocks in charts.md). If a section matches no block:
 
 - It is a known block with different content (a different list, a
   different identity) → reuse the block.
@@ -56,7 +57,7 @@ Render (or reason through) these widths:
 | ----- | ------ |
 | 390 | Page-level cards edge to edge and square; header nav on its own row; hero photo above text |
 | 768 | Rounded cards with gutters; hero side by side; prose at `prose-lg` |
-| 1280 | TOC rail in the right gutter (articles with 2+ headings) |
+| 1280 | TOC rail in the right gutter (articles with 2+ headings); on a Dashboard shell page, cards in the `lg` grid |
 
 ## 5. Review
 
