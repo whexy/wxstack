@@ -59,10 +59,20 @@ namespace, control URL and masked token in use, and where each one came from.
 
 ### Private platforms
 
-A private install may be reachable only through a port-forward or tunnel to
-its gateway. The gateway still routes by `Host` header, so connect to the
-forward and keep the real hostnames in the URL and header. With upstream's
-Kubernetes base, the forward is
+A private install is usually on a private network, such as a VPN or a
+tailnet, and serves its real hostnames there over HTTPS. If the control host
+resolves from this machine, use the URLs directly; nothing below applies.
+
+On such a network, the Worker host for a new namespace may not exist until
+the operator publishes it, because some private networks cannot give every
+`<namespace>.<platform-domain>` name automatically. If the control URL works
+but the Worker host does not resolve, tell the user the namespace needs
+publishing; do not reach it another way.
+
+Off that network, a private install may be reachable only through a
+port-forward or tunnel to its gateway. The gateway still routes by `Host`
+header, so connect to the forward and keep the real hostnames in the URL and
+header. With upstream's Kubernetes base, the forward is
 `kubectl -n <namespace> port-forward svc/gateway <port>:8080`; the user names
 the namespace and context.
 
