@@ -78,6 +78,15 @@ Habits for a repository's day-to-day work.
 | [ship-pr](skills/ship-pr/SKILL.md) | Commit, rebase, open a pull request, watch CI and rebase-merge it, or stop before the merge |
 | [nix-blueprint](skills/nix-blueprint/SKILL.md) | Find where a file goes, and which output it becomes, in a flake built with numtide/blueprint |
 
+### WDL
+
+Working on a self-hosted [WDL](https://github.com/wdl-dev/wdl) platform, which
+runs Cloudflare Workers-style code.
+
+| Skill | Use it to |
+| ----- | --------- |
+| [wdl](skills/wdl/SKILL.md) | Build, deploy, debug and remove Workers, and issue namespace tokens as the operator |
+
 ## License
 
 [MIT](LICENSE)
