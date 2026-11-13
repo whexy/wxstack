@@ -27,7 +27,7 @@ single centered 720px column, which goes edge to edge on phones.
 | `highlight`           | `#eecfcf`             | Dusty rose, the brand accent                       |
 | `neutral-50`…`900`    | Tailwind neutral      | The only gray ramp (chroma 0)                      |
 | `white`, `black`      | `#fff`, `#000`        | Glass fills (`white/20`…`/80`), hairlines (`black/5`, `/10`) |
-| Decorative palette    | Tailwind values       | blue 100/200/500/600, cyan 200, purple 50/200, pink 100/200, yellow 200, orange 100/200/500/600, red 50/100/200/500/700 |
+| Decorative palette    | Tailwind values       | blue 100/200/500/600, cyan 200/600, purple 50/200/500, pink 100/200/500, yellow 200/600, orange 100/200/500/600, red 50/100/200/500/700 |
 
 `tokens.css` resets Tailwind's color, radius and shadow ramps to
 `initial`, so `text-gray-500`, `bg-green-600`, `rounded-sm` or
@@ -36,7 +36,9 @@ not part of the site.
 
 The decorative palette only appears as gradient stops: `glass-tint`,
 `glow-blob`, `icon-tile`, `bubble-me` (blue 500→600), and the series
-card (red/orange). It never carries meaning.
+card (red/orange). It never carries meaning. The one exception is
+chart identity, through the `series-*` tokens below
+([charts.md](charts.md)).
 
 Code blocks use the gruvbox dark palette, written as hex inside
 `prism-gruvbox.css` and `code.css`. Those files are the only place raw
@@ -58,10 +60,15 @@ uses for that job.
 | `ink-muted`      | `neutral-500`    | Metadata, "information unavailable", idle TOC entries         | TOC links, GithubRepo/Bilibili fallback text        |
 | `ink-faint`      | `neutral-400`    | Placeholder icons and values                                  | Fallback avatar glyph, `-` stats                    |
 | `on-ink`         | `white-readable` | Text on a solid ink fill                                      | `btn-solid` text                                    |
-| `accent`         | `highlight`      | Link highlighter, focus ring, `::selection`. Nothing else.    | Prose links, every `focus-visible:outline-*`        |
+| `accent`         | `highlight`      | Link highlighter, focus ring, `::selection`, a selected chart range. Nothing else. | Prose links, every `focus-visible:outline-*`        |
 | `wash`           | `secondary`      | Hover wash on rows and embed cards (`secondbg`)               | Post list row hover, GithubRepo, Bilibili           |
 | `placeholder`    | `neutral-200`    | Disc behind a missing avatar or thumbnail                     | GithubRepo/Bilibili fallback                        |
-| `rule`           | `neutral-200`    | Hairline rails                                                | TOC left border                                     |
+| `rule`           | `neutral-200`    | Hairline rails, chart gridlines                               | TOC left border                                     |
+| `series-1`…`6`   | blue-500, orange-500, pink-500, cyan-600, purple-500, yellow-600 | Chart entities, assigned in this order | Charts only ([charts.md](charts.md)) |
+| `series-other`   | `neutral-400`    | Chart entities folded into "Other"                            | Charts only                                         |
+| `series-total`   | `neutral-800`    | Chart values of no one entity (totals)                        | Charts only                                         |
+| `series-muted`   | `neutral-300`    | Chart series pushed back while another is emphasized          | Charts only                                         |
+| `axis`           | `neutral-300`    | Chart baseline, crosshair, marker hairlines                   | Charts only                                         |
 
 **Undecided, check with the user first:** status colors
 (success/warning/danger/info), a darker accent, dark mode. The site has
@@ -191,7 +198,9 @@ square and edge-to-edge below `sm` (`max-sm:rounded-none`, built into
 
 ## Layout
 
-- One column: `max-w-content` (720px), centered.
+- One column: `max-w-content` (720px), centered. Exception: chart
+  pages use the full-width Dashboard shell
+  ([charts.md](charts.md#dashboard-shell)).
 - Breakpoints are Tailwind's defaults. `sm` (640): surfaces become
   rounded cards with gutters. `md` (768): hero goes side by side,
   prose goes `prose-lg`. `lg` (1024): hero padding grows. `xl` (1280):

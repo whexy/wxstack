@@ -1,18 +1,20 @@
 ---
 name: frost
-description: Frost, the design language of Wenxuan's site www.whexy.com - tokens, components, blocks and open questions. Use for any UI work in a project that uses Frost or should look like whexy.com, before choosing a color, size, component or layout. The frost-setup, frost-page, frost-component and frost-review skills build on it.
+description: Frost, the design language of Wenxuan's site www.whexy.com - tokens, components, blocks, charts and open questions. Use for any UI work in a project that uses Frost or should look like whexy.com, before choosing a color, size, component, chart or layout. The frost-setup, frost-page, frost-component and frost-review skills build on it.
 ---
 
 # Frost
 
 Frost is light glassmorphism on an Apple-like canvas: a flat light-gray
 page, frosted-glass cards with soft colored glows behind them, opaque
-white paper for reading, neutral text, and one dusty-rose accent. All
-content sits in one centered 720px column that goes edge to edge on
-phones.
+white paper for reading, neutral text, and one dusty-rose accent.
+Reading content sits in one centered 720px column that goes edge to
+edge on phones; data dashboards drop the column and use the full
+width.
 
 It is extracted from www.whexy.com (source: github.com/whexy/blog-1999).
-Only what the site actually ships is documented here.
+Only what the site actually ships is documented here, plus charts,
+which the user designed for Frost before the site has any.
 
 ## Files
 
@@ -26,6 +28,9 @@ Only what the site actually ships is documented here.
 | [references/foundations.md](references/foundations.md) | What each token is for, type scale, spacing, radius, shadow, motion, layout, off-scale values | Choosing values |
 | [references/components.md](references/components.md) | Every component: when to use, default, good/bad example, states | Using or changing a component |
 | [references/blocks.md](references/blocks.md) | Named page sections and every page as a stack of blocks | Building a page or section |
+| [references/charts.md](references/charts.md) | Chart forms, series colors, marks, axes, interaction, chart blocks | Showing any data as a chart, figure or stat |
+| [assets/charts.css](assets/charts.css), [assets/charts.ts](assets/charts.ts) | Chart classes (`chart-tip`, `stat-row`, …) and SVG geometry helpers | The project draws charts |
+| [assets/charts-specimen.html](assets/charts-specimen.html) | Standalone interactive page showing every chart pattern | Seeing what a chart should look like |
 | [references/open-questions.md](references/open-questions.md) | Undecided choices the user decides | Whenever a choice is not covered above |
 
 ## Which skill to use
@@ -42,6 +47,6 @@ Each is a separate skill; load it by name.
 1. Values come from `tokens.css`. If none fits, ask; never add one.
 2. Components come from `components.md`. If none fits, use
    `frost-component`, and ask before inventing a new look.
-3. Pages are stacks of blocks from `blocks.md`. If none fits, ask
-   whether the section belongs.
+3. Pages are stacks of blocks from `blocks.md` and `charts.md`. If
+   none fits, ask whether the section belongs.
 4. Anything in `open-questions.md` is the user's call.

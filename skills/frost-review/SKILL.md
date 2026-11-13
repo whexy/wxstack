@@ -13,7 +13,7 @@ and do not add checks of your own; put other observations under
 Reference files are in the `frost` skill. Load the `frost` skill by name; these paths are inside its directory:
 `references/foundations.md` (including the **Off-scale values** table),
 `references/components.md`, `references/blocks.md`,
-`references/open-questions.md`.
+`references/charts.md`, `references/open-questions.md`.
 
 ## Results
 
@@ -67,7 +67,7 @@ rg -no '[a-z0-9:-]+-\[[^\] ]+\]' $FILES
 
 Pass only: `scale-[1.02]`; the Prose link classes
 `prose-a:shadow-[inset_0_-0.4rem_0_var(--color-accent)]` and
-`prose-a:duration-[0.25s]`; `min-h-[80vh]` in the Page shell;
+`prose-a:duration-[0.25s]`; `min-h-[80vh]` in the Page shell and Dashboard shell;
 `mt-[25vh]` in the Error card; `right-[max(...)]` and `max-h-[70vh]` in
 the TOC rail. Anything else fails, or is **known** per the Off-scale
 values table.
@@ -84,7 +84,7 @@ Any hit fails.
 
 ```sh
 rg -no '\b(red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-[0-9]+' $FILES \
-  | rg -v ':(blue-(100|200|500|600)|cyan-200|purple-(50|200)|pink-(100|200)|yellow-200|orange-(100|200|500|600)|red-(50|100|200|500|700))$'
+  | rg -v ':(blue-(100|200|500|600)|cyan-(200|600)|purple-(50|200|500)|pink-(100|200|500)|yellow-(200|600)|orange-(100|200|500|600)|red-(50|100|200|500|700))$'
 ```
 
 Any hit fails: tokens.css does not declare it, so the class generates
@@ -98,15 +98,16 @@ rg -no '\b(text|bg|border|ring|outline|fill|stroke|shadow|decoration)-(red|orang
 
 Pass only: the icon color inside an `icon-tile` (`text-red-700` in the
 series card). Any other hit fails; if it signals status, **ask** (Q2).
+A chart entity takes its `series-N` token, never the hue behind it.
 
 **C6 Primitive instead of semantic**
 
 ```sh
-rg -no '\b(text|bg|border|outline|ring)-(neutral-[0-9]+|black-readable|white-readable|highlight|secondary)\b' $FILES
+rg -no '\b(text|bg|border|outline|ring|fill|stroke)-(neutral-[0-9]+|black-readable|white-readable|highlight|secondary)\b' $FILES
 ```
 
-Fail; fix with the C6 mapping below. `neutral-50`, `-100` and `-300`
-have no token: pass only inside Quote and code chips, otherwise **ask**.
+Fail; fix with the C6 mapping below. `neutral-50` and `-100` have no
+token: pass only inside Quote and code chips, otherwise **ask**.
 
 **C7 Durations**
 
@@ -153,6 +154,14 @@ Pass only: `max-w-xs` on bubbles, `max-w-xl` on embeds, `max-w-4xl` on
 Quote and the 404 page. `max-w-175` on the Notion page is **known**.
 Anything else fails.
 
+**C13 Series color on text**
+
+```sh
+rg -no '\btext-series-[a-z0-9]+' $FILES
+```
+
+Any hit fails: series colors mark keys and marks; text stays `ink-*`.
+
 **C12 Focus ring**
 
 ```sh
@@ -160,7 +169,7 @@ rg -n '<(button|a|Link)\b|onClick=' $FILES
 ```
 
 For each element found: pass if its class list has `btn-glass`,
-`btn-solid`, `nav-link`, `segmented-item` or
+`btn-solid`, `nav-link`, `segmented-item`, `chart-legend-item` or
 `focus-visible:outline-accent`, or it is a link inside Prose. List row,
 Numbered row and TOC links without it are **known** (Q11). Otherwise
 fail.
@@ -175,6 +184,10 @@ C6 mapping:
 | `text-neutral-600` | `text-ink-subtle` |
 | `text-neutral-500` | `text-ink-muted` |
 | `text-neutral-400` | `text-ink-faint` |
+| `fill-`/`stroke-`/`bg-neutral-300` in a chart | `series-muted` (a pushed-back series) or `axis` (baseline, crosshair, hairline) |
+| `fill-`/`stroke-`/`bg-neutral-400` in a chart | `series-other` |
+| `fill-`/`stroke-`/`bg-neutral-800` in a chart | `series-total` |
+| `stroke-neutral-200` | `stroke-rule` |
 | `bg-neutral-200` | `bg-placeholder` |
 | `border-neutral-200` | `border-rule` |
 | `*-black-readable` | `*-ink` |
@@ -195,21 +208,25 @@ the rule says **ask**.
 | S4 | Do page-level surfaces go square edge to edge below `sm` (`max-sm:rounded-none` on `glass-card`, or `panel`/`paper`), and does each nested surface use a smaller radius than its parent? |
 | S5 | Does every component appear at a documented variant, and does every state it renders appear in that component's states table in components.md? An invented pressed/disabled/loading/empty state → **ask** (Q10, Q15) |
 | S6 | Is every state truthful: the current/active item, `aria-current`, labels, counts and fallback notes derived from the same data that decides them (no hardcoded "current", no label that can disagree with the state it describes)? |
-| S7 | Is `accent` used only for link highlighting, focus rings and selection? |
+| S7 | Is `accent` used only for link highlighting, focus rings, selection and a selected chart range? |
 | S8 | At most one `Depth3D` and at most one `btn-solid` per group of actions on the screen? |
 | S9 | Is every persistent line of copy data, identity, navigation, an action, a state or a warning (no taglines, eyebrow labels or filler descriptions)? |
 | S10 | Does anything new honor `prefers-reduced-motion` if it animates beyond a hover transition? |
+| S11 | Is every chart a form from the "Pick the form" table in charts.md, on `paper`, with a single y-axis, and no pie, donut or 3D? |
+| S12 | Do chart entities take `series-N` in slot order, keep the same slot everywhere on the screen, stop at 6 plus `series-other` (3 for scatter-like forms), with totals in `series-total` and no status color? |
+| S13 | Does every chart with 2+ series have a legend (and one series none), label only the endpoint or a few marks, show the tooltip on hover and on keyboard focus, and compute its figure, legend totals and stats from the same data as its plot? |
 
 ## 3. Visual check
 
 Do this when the project can run (`dev` server or a build). Otherwise
-mark V1–V3 "not run" with the reason.
+mark V1–V4 "not run" with the reason.
 
 | ID | Check |
 | -- | ----- |
 | V1 | At 390px wide: page-level cards touch both screen edges with square corners; header nav sits on its own row |
-| V2 | At 768px: page-level cards are rounded with gutters; content stays within a 720px column |
+| V2 | At 768px: page-level cards are rounded with gutters; content stays within a 720px column, except on a Dashboard shell page |
 | V3 | Hover one `btn-glass`: it lifts slightly and brightens. Press Tab to the first link or button: an accent (dusty-rose) outline ring appears |
+| V4 | Charts only, at 390px: x-axis labels never touch, the tooltip stays inside the card, and the chart card is square and edge to edge. At 1280px on a Dashboard shell page: cards sit in the grid and no plot overflows its card |
 
 Take a screenshot at each width and attach or link it.
 
@@ -224,7 +241,7 @@ Stack: <S1 stack>
 | --- | ------ | --------------- | --- |
 | C1  | pass   |                 |     |
 | C2  | fail   | app/x.tsx:12    | `p-[18px]` → `p-4` |
-| ... (every check C1–C12, S1–S10, V1–V3) |
+| ... (every check C1–C13, S1–S13, V1–V4) |
 
 Open questions hit: <Q numbers, or none>
 Notes: <anything else, or none>

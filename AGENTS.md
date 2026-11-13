@@ -20,7 +20,9 @@ from it with the `skills` CLI, like any other skill repository.
 ## Frost
 
 Frost documents www.whexy.com as it ships
-([whexy/blog-1999](https://github.com/whexy/blog-1999)); it invents nothing.
+([whexy/blog-1999](https://github.com/whexy/blog-1999)); it invents nothing
+the user has not decided. Charts are the one part decided ahead of the
+site; when the site ships charts, bring `references/charts.md` in line.
 When an open question is answered, move the decision into `tokens.css`,
 `components.md` or `AGENTS.frost.md` and delete the question. When the
 site's design changes, update Frost in step.
