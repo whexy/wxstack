@@ -77,6 +77,7 @@ Habits for a repository's day-to-day work.
 | ----- | --------- |
 | [ship-pr](skills/ship-pr/SKILL.md) | Commit, rebase, open a pull request, watch CI and rebase-merge it, or stop before the merge |
 | [nix-blueprint](skills/nix-blueprint/SKILL.md) | Find where a file goes, and which output it becomes, in a flake built with numtide/blueprint |
+| [own-fork](skills/own-fork/SKILL.md) | Fork an upstream project onto your own stack, keep your commits rebased on it, and let an agent repair failed syncs and builds |
 
 ### WDL
 
