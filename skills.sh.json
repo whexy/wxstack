@@ -26,10 +26,11 @@
     },
     {
       "title": "Workflow",
-      "description": "Ship finished work as a rebase-merged pull request, and wire files into Nix flakes built with numtide/blueprint.",
+      "description": "Ship finished work as a rebase-merged pull request, wire files into Nix flakes built with numtide/blueprint, and fork an upstream project so the user owns it.",
       "skills": [
         "ship-pr",
-        "nix-blueprint"
+        "nix-blueprint",
+        "own-fork"
       ]
     },
     {
