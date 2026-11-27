@@ -88,6 +88,7 @@ runs Cloudflare Workers-style code.
 | Skill | Use it to |
 | ----- | --------- |
 | [wdl](skills/wdl/SKILL.md) | Build, deploy, debug and remove Workers, and issue namespace tokens as the operator |
+| [wdl-nextjs](skills/wdl-nextjs/SKILL.md) | Deploy a full-stack Next.js app as a Worker through OpenNext |
 
 ## License
 

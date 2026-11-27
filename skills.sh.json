@@ -36,9 +36,10 @@
     },
     {
       "title": "WDL",
-      "description": "Build, deploy and debug Cloudflare Workers-style code on a self-hosted WDL platform, and issue its namespace tokens.",
+      "description": "Build, deploy and debug Cloudflare Workers-style code and Next.js apps on a self-hosted WDL platform, and issue its namespace tokens.",
       "skills": [
-        "wdl"
+        "wdl",
+        "wdl-nextjs"
       ]
     }
   ]
