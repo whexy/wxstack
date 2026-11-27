@@ -100,6 +100,8 @@ forward with the `Host` header as above.
 
 ## Build a Worker
 
+To deploy a Next.js app, load the `wdl-nextjs` skill instead of this section.
+
 ```sh
 wdl init <name>
 cd <name> && npm install
