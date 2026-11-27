@@ -17,6 +17,15 @@ Load the `wdl` skill first. It covers credentials, the CLI, the Worker URL,
 `--ns <namespace>` to every `wdl` command below: the token store's default
 namespace may be another one.
 
+**Requires** a platform that serves a version's assets ahead of the Worker,
+has `env.ASSETS.fetch()`, and gives Durable Objects `ctx.exports.default`.
+Upstream WDL and older releases lack these; the fork
+[whexy/wdl](https://github.com/whexy/wdl) has them from `wdl.20261127.5`.
+They shipped together, so one check covers all three: after the first deploy,
+`curl <app-url>/BUILD_ID` must print the contents of `.next/BUILD_ID`. Trust
+this over the version `wdl doctor` reports. A 404 means the platform lacks
+them: stop and tell the user; do not work around it with a proxy in the entry.
+
 ## What changes on WDL
 
 | On Cloudflare                                       | On WDL                                                       | What you do                                                  |
